@@ -33,10 +33,25 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String myMessage = "Hello! My name is boo." + "\nI am old." + "\nI like coding";
+        int coffeeTotalPrice = quantity * 5;
+
+        String myMessage = "Total: $" + coffeeTotalPrice;
+        myMessage = myMessage + "\nThank You!";
         displayMessage(myMessage);
-//        int coffeeTotalPrice = quantity * 5;
-//        displayPrice(coffeeTotalPrice);
+        //displayPrice(coffeeTotalPrice);
+        calculatePrice(5);
+    }
+
+
+
+    /**
+     * Calculates the price of the order.
+     *
+     * @param quantity is the number of cups of coffee ordered
+     */
+    private int calculatePrice(int quantity) {
+        int price = quantity * 5;
+        return price;
     }
 
     /**
@@ -44,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void increment(View view) {
         quantity = quantity + 1;
-        display(quantity);
-        submitOrder(view);
+        displayQuantity(quantity);
+        //submitOrder(view);
     }
 
     /**
@@ -53,16 +68,16 @@ public class MainActivity extends AppCompatActivity {
      */
     public void decrement(View view) {
         quantity = quantity - 1;
-        display(quantity);
+        displayQuantity(quantity);
         submitOrder(view);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayQuantity(int total) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + total);
     }
 
     /**
